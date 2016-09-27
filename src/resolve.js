@@ -24,45 +24,33 @@ async function resolve(routes, pathOrContext) {
   async function next() {
     ({ value, done } = match.next());
 
-    if (value && !done) {
+    if (!value || done || (result !== null && result !== undefined)) {
+      return result;
+    }
+
+    if (value.route.action) {
       const newContext = Object.assign({}, context, value);
 
-      if (value.route.action) {
-        if (errorRoute) {
-          try {
-            return await value.route.action(newContext, newContext.params);
-          } catch (err) {
-            err.status = err.status || 500;
-            newContext.error = err;
-            return await errorRoute.action(newContext, newContext.params);
-          }
-        } else {
-          return await value.route.action(newContext, newContext.params);
+      if (errorRoute) {
+        try {
+          result = await value.route.action(newContext, newContext.params);
+        } catch (err) {
+          err.status = err.status || 500;
+          newContext.error = err;
+          result = await errorRoute.action(newContext, newContext.params);
         }
+      } else {
+        result = await value.route.action(newContext, newContext.params);
       }
     }
 
-    return null;
+    return await next();
   }
 
   context.next = next;
   context.end = (data) => { result = data; done = true; return data; };
 
-  while (!done) {
-    result = await next();
-
-    if (result !== null && result !== undefined) {
-      break;
-    }
-  }
-
-  if ((result === null || result === undefined) && errorRoute) {
-    context.error = new Error('Not found');
-    context.error.status = 404;
-    return await errorRoute.action(context, {});
-  }
-
-  return result;
+  return await next();
 }
 
 export default resolve;
