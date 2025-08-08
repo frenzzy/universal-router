@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [10.0.1] - 2025-08-08
+
+- Add `cjs/package.json` for CommonJS target ([#220](https://github.com/kriasoft/universal-router/pull/220))
+
 ## [10.0.0] - 2025-05-05
 
 - Updated [path-to-regexp](https://www.npmjs.com/package/path-to-regexp) from v6.2.0 to v8.2.0.
@@ -322,7 +326,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Small bug fixes and improvements
 
-[unreleased]: https://github.com/kriasoft/universal-router/compare/v10.0.0...HEAD
+[unreleased]: https://github.com/kriasoft/universal-router/compare/v10.0.1...HEAD
+[10.0.1]: https://github.com/kriasoft/universal-router/compare/v10.0.0...v10.0.1
 [10.0.0]: https://github.com/kriasoft/universal-router/compare/v9.2.1...v10.0.0
 [9.2.1]: https://github.com/kriasoft/universal-router/compare/v9.2.0...v9.2.1
 [9.2.0]: https://github.com/kriasoft/universal-router/compare/v9.1.0...v9.2.0
