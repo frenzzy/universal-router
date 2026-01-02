@@ -14,6 +14,7 @@ src/path-to-regexp.ts
 npm-debug.log*
 
 # Editors and IDEs
+.claude/
 .idea/
 
 # Misc
