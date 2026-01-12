@@ -46,8 +46,10 @@ export type RouteResult<T> =
   | undefined
   | Promise<T | null | undefined>
 
-export interface RouteContext<R = any, C extends RouterContext = RouterContext>
-  extends ResolveContext {
+export interface RouteContext<
+  R = any,
+  C extends RouterContext = RouterContext,
+> extends ResolveContext {
   /**
    * Current router instance.
    */
@@ -133,10 +135,7 @@ export type ErrorHandler<R = any> = (
 ) => RouteResult<R>
 
 export interface RouterOptions<R = any, C extends RouterContext = RouterContext>
-  extends ParseOptions,
-    MatchOptions,
-    PathToRegexpOptions,
-    CompileOptions {
+  extends ParseOptions, MatchOptions, PathToRegexpOptions, CompileOptions {
   context?: C
   baseUrl?: string
   resolveRoute?: ResolveRoute<R, C>

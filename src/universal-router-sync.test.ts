@@ -361,7 +361,7 @@ describe('UniversalRouterSync', () => {
       children: [
         {
           path: '/a/b/c',
-          action({ next }): Promise<unknown> {
+          action({ next }): unknown {
             log.push(2)
             const result = next(true)
             log.push(8)
@@ -376,7 +376,7 @@ describe('UniversalRouterSync', () => {
           children: [
             {
               path: '/b',
-              action({ next }): Promise<unknown> {
+              action({ next }): unknown {
                 log.push(4)
                 const result = next()
                 log.push(6)

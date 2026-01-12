@@ -17,9 +17,7 @@ export default config(
   js.configs.recommended,
   ...configs.recommendedTypeChecked,
   ...configs.stylisticTypeChecked,
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
   importPlugin.flatConfigs.recommended,
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
   importPlugin.flatConfigs.typescript,
   {
     languageOptions: {
